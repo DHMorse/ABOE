@@ -12,6 +12,7 @@ fsspec==2025.2.0
 huggingface-hub==0.28.1
 idna==3.10
 multidict==6.1.0
+numpy==2.2.2
 packaging==24.2
 propcache==0.2.1
 python-dotenv==1.0.1
