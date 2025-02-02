@@ -10,6 +10,7 @@ cd "$HOME/ABOE"
 
 cp "$HOME/Omniplexium-Eternal/const.py" "$HOME/ABOE/const.py"
 cp "$HOME/Omniplexium-Eternal/helperFunctions/main.py" "$HOME/ABOE/helperFunctions/OE.py"
+cp "$HOME/Omniplexium-Eternal/secret_const.py" "$HOME/ABOE/secret_const.py"
 
 # Pull latest changes from GitHub
 git pull
