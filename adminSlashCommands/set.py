@@ -8,7 +8,7 @@ import sqlite3
 from const import COLORS, DATABASE_PATH # type: ignore
 from helperFunctions.OE import updateXpAndCheckLevelUp # type: ignore
 
-class Admin(commands.Cog):
+class AdminSet(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
@@ -86,4 +86,4 @@ class Admin(commands.Cog):
             await interaction.response.send_message("You don't have permission to use this command!", ephemeral=True)
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(Admin(bot))
+    await bot.add_cog(AdminSet(bot))
