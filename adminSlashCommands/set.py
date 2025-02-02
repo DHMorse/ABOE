@@ -19,6 +19,8 @@ class AdminSet(commands.Cog):
             await interaction.response.send_message(f"```ansi\n{COLORS['red']}Please specify a stat and value to set.{COLORS['reset']}```", ephemeral=True)
             return
         
+        stat = stat.lower().strip()
+
         if stat not in ['xp', 'money', 'lastLogin', 'loginStreak']:
             await interaction.response.send_message(f"```ansi\n{COLORS['red']}Please specify a valid stat to set it\'s value.{COLORS['reset']}```", ephemeral=True)
             await interaction.response.send_message(f'Valid stats: xp, money, lastLogin, loginStreak', ephemeral=True)
