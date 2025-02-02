@@ -8,6 +8,9 @@ fi
 
 cd "$HOME/ABOE"
 
+cp "$HOME/Omniplexium-Eternal/const.py" "$HOME/ABOE/const.py"
+cp "$HOME/Omniplexium-Eternal/helperFunctions/main.py" "$HOME/ABOE/helperFunctions/OE.py"
+
 # Pull latest changes from GitHub
 git pull
 
