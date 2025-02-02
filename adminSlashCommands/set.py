@@ -16,11 +16,11 @@ class Admin(commands.Cog):
     @app_commands.checks.has_permissions(administrator=True)  # Restrict to admins
     async def adminSlashCommandSet(self, interaction: discord.Interaction, stat: str, value: str, member: discord.Member = None) -> None:
         if stat == '' or value == '':
-            await interaction.response.send_message(f'```ansi\n{COLORS['red']}Please specify a stat and value to set.{COLORS['reset']}```', ephemeral=True)
+            await interaction.response.send_message(f"```ansi\n{COLORS['red']}Please specify a stat and value to set.{COLORS['reset']}```", ephemeral=True)
             return
         
         if stat not in ['xp', 'money', 'lastLogin', 'loginStreak']:
-            await interaction.response.send_message(f'```ansi\n{COLORS['red']}Please specify a valid stat to set it\'s value.{COLORS['reset']}```', ephemeral=True)
+            await interaction.response.send_message(f"```ansi\n{COLORS['red']}Please specify a valid stat to set it\'s value.{COLORS['reset']}```", ephemeral=True)
             await interaction.response.send_message(f'Valid stats: xp, money, lastLogin, loginStreak', ephemeral=True)
             return
 
@@ -28,14 +28,14 @@ class Admin(commands.Cog):
             try:
                 value = int(value)
             except ValueError:
-                await interaction.response.send_message(f'```ansi\n{COLORS['red']}Value\'s for xp must be integers.{COLORS['reset']}```', ephemeral=True)
+                await interaction.response.send_message(f"```ansi\n{COLORS['red']}Value\'s for xp must be integers.{COLORS['reset']}```", ephemeral=True)
                 return
             
         if stat == 'money':
             try:
                 value = float(value)
             except ValueError:
-                await interaction.response.send_message(f'```ansi\n{COLORS['red']}Value\'s for money must be floats.{COLORS['reset']}```', ephemeral=True)
+                await interaction.response.send_message(f"```ansi\n{COLORS['red']}Value\'s for money must be floats.{COLORS['reset']}```", ephemeral=True)
                 return
 
         if member is None:
@@ -55,29 +55,29 @@ class Admin(commands.Cog):
                             elif value < current_xp:
                                 await updateXpAndCheckLevelUp(interaction, interaction.bot, current_xp - value, False)
 
-                            await interaction.response.send_message(f'```ansi\n{COLORS['blue']}Set {member.name}\'s xp to {value}.{COLORS['reset']}```', ephemeral=True)
+                            await interaction.response.send_message(f"```ansi\n{COLORS['blue']}Set {member.name}\'s xp to {value}.{COLORS['reset']}```", ephemeral=True)
 
                         case 'money':
                             cursor.execute("UPDATE users SET money = ? WHERE userId = ?", (value, member.id))
                             conn.commit()
-                            await interaction.response.send_message(f'```ansi\n{COLORS['blue']}Set {member.name}\'s money to ${value}.{COLORS['reset']}```', ephemeral=True)
+                            await interaction.response.send_message(f"```ansi\n{COLORS['blue']}Set {member.name}\'s money to ${value}.{COLORS['reset']}```", ephemeral=True)
 
                         case 'lastLogin':
                             cursor.execute("UPDATE users SET lastLogin = ? WHERE userId = ?", (value, member.id))
                             conn.commit()
-                            await interaction.response.send_message(f'```ansi\n{COLORS['blue']}Set {member.name}\'s last login to {value}.{COLORS['reset']}```', ephemeral=True)
+                            await interaction.response.send_message(f"```ansi\n{COLORS['blue']}Set {member.name}\'s last login to {value}.{COLORS['reset']}```", ephemeral=True)
 
                         case 'loginStreak':
                             cursor.execute("UPDATE users SET loginStreak = ? WHERE userId = ?", (value, member.id))
                             conn.commit()
-                            await interaction.response.send_message(f'```ansi\n{COLORS['blue']}Set {member.name}\'s login streak to {value}.{COLORS['reset']}```', ephemeral=True)
+                            await interaction.response.send_message(f"```ansi\n{COLORS['blue']}Set {member.name}\'s login streak to {value}.{COLORS['reset']}```", ephemeral=True)
 
                         case _:
-                            await interaction.response.send_message(f'```ansi\n{COLORS['red']}Please specify a valid stat to set it\'s value.{COLORS['reset']}```', ephemeral=True)
+                            await interaction.response.send_message(f"```ansi\n{COLORS['red']}Please specify a valid stat to set it\'s value.{COLORS['reset']}```", ephemeral=True)
                             await interaction.response.send_message(f'Valid stats: xp, money, lastLogin, loginStreak', ephemeral=True)
                             return
         except Exception as e:
-            await interaction.response.send_message(f'```ansi\n{COLORS['red']}Error: {e}{COLORS['reset']}```', ephemeral=True)
+            await interaction.response.send_message(f"```ansi\n{COLORS['red']}Error: {e}{COLORS['reset']}```", ephemeral=True)
             return
 
     @adminSlashCommandSet.error
